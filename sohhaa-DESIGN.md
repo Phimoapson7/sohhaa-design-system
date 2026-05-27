@@ -74,31 +74,35 @@ The aesthetic balances a clean, modern structure with friendly energy. Every com
 
 ### Fonts
 - **ภาษาอังกฤษ / ตัวเลข**: Red Hat Display — โหลดจาก Google Fonts
-- **ภาษาไทย**: Sarabun — โหลดจาก Google Fonts
+- **ภาษาไทย**: Anuphan (Anuphan) — self-hosted
 
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: 'Anuphan';
+  src: url('/fonts/Anuphan.woff2') format('woff2');
+}
 ```
 
 **Red Hat Display** ให้ความรู้สึก Modern และ Approachable เหมาะกับ Heading และ UI Label ภาษาอังกฤษ
-**Sarabun** เป็นฟอนต์มีหัวที่อ่านง่ายบน Screen รองรับทุก Weight และแสดงผลชัดเจนทุกขนาด
+**Anuphan** เป็นฟอนต์มีหัวที่อ่านง่ายบน Screen รองรับทุก Weight และแสดงผลชัดเจนทุกขนาด
 
 ### Type Scale
 
 | ชื่อ | Size | Weight | Font | Line Height | Letter Spacing |
 |---|---|---|---|---|---|
 | Display | 40px | 700 | Red Hat Display | 1.2 | -0.02em |
-| H1 | 32px | 700 | Red Hat Display | 1.2 | -0.02em |
-| H2 | 24px | 700 | Red Hat Display / Sarabun | 1.3 | -0.01em |
-| H3 | 20px | 600 | Red Hat Display / Sarabun | 1.3 | 0em |
-| Body | 16px | 400 | Sarabun | 1.6 | 0em |
-| Body Medium | 16px | 500 | Sarabun | 1.6 | 0em |
-| Body Small | 14px | 400 | Sarabun | 1.6 | 0em |
-| Caption | 12px | 500 | Sarabun | 1.5 | 0.01em |
+| H1 | 32px | 700 | Red Hat Display / Anuphan | 1.3 | -0.01em / 0em |
+| H2 | 24px | 700 | Red Hat Display / Anuphan | 1.4 | -0.01em / 0em |
+| H3 | 20px | 600 | Red Hat Display / Anuphan | 1.4 | -0.01em / 0em |
+| Body | 16px | 400 | Anuphan | 1.6 | 0em |
+| Body Medium | 16px | 500 | Anuphan | 1.6 | 0em |
+| Body Small | 14px | 400 | Anuphan | 1.6 | 0em |
+| Caption | 12px | 500 | Anuphan | 1.5 | 0.01em |
 | Button | 15px | 600 | Red Hat Display | 1.0 | 0em |
 
 ### กฎการใช้งาน
-- ประโยคผสมไทย-อังกฤษ ให้ใช้ **Sarabun เป็นหลัก**
+- ประโยคผสมไทย-อังกฤษ ให้ใช้ **Anuphan เป็นหลัก**
 - ชื่อ Brand, UI Label ภาษาอังกฤษล้วน และชื่อปุ่ม ใช้ **Red Hat Display**
 - ตัวเลขสำคัญ เช่น ราคา, จำนวนที่นั่ง ใช้ **Red Hat Display weight 600** เพื่อความชัดเจน
 - ห้ามผสมสองฟอนต์ในคำหรือประโยคเดียวกัน
@@ -161,14 +165,13 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 - Font: Red Hat Display 600, 15px
 - Min width: `100px`
 
-| Variant | Background | Text | Border |
-|---|---|---|---|
-| Primary | `#3e93ed` | `#FFFFFF` | — |
-| Primary Hover | `#75a9f4` | `#FFFFFF` | — |
-| Secondary | `#FFFFFF` | `#232323` | 1px `#F2F3F7` |
-| Ghost | transparent | `#3e93ed` | — |
-| Danger | `#E62F29` | `#FFFFFF` | — |
-| Disabled | 40% opacity | — | — |
+| Variant | Background | Text |
+|---|---|---|
+| Primary | `#3e93ed` | `#FFFFFF` |
+| Neutral | `#394956` | `#FFFFFF` |
+| Success | `#228350` | `#FFFFFF` |
+| Warning | `#FEC748` | `#232323` |
+| Error | `#E62F29` | `#FFFFFF` |
 
 ### Card
 - Background: `#FFFFFF`
@@ -185,7 +188,7 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 - Padding: `10px 14px`
 - Border radius: `8px`
 - Border: 1px `#F2F3F7`
-- Font: Sarabun 400, 16px
+- Font: Anuphan 400, 16px
 - Focus: 2px `#3e93ed`, ring 4px `#3e93ed` 10% opacity
 - Error: 1px `#E62F29`
 - Placeholder color: `#94A1B1`
@@ -194,23 +197,22 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 - Height: `28px`
 - Padding: `0 10px`
 - Border radius: `4px`
-- Font: Sarabun 500, 13px
+- Font: Anuphan 500, 13px
 
 | Variant | Background | Text |
 |---|---|---|
-| Primary | `#ebf1fd` | `#3e93ed` |
-| Secondary | `#CCFAF6` | `#0D9488` |
-| Success | `#E4FBE7` | `#228350` |
-| Warning | `#FFF7E4` | `#FFD56E` |
-| Error | `#FFE4E1` | `#E62F29` |
-| Neutral | `#F2F3F7` | `#394956` |
+| Primary | `#3e93ed` | `#FFFFFF` |
+| Neutral | `#394956` | `#FFFFFF` |
+| Success | `#228350` | `#FFFFFF` |
+| Warning | `#FEC748` | `#232323` |
+| Error | `#E62F29` | `#FFFFFF` |
 
 ### Navigation
 - Top bar height: `60px`
 - Background: `#FFFFFF`
 - Bottom border: 1px `#F2F3F7`
 - Logo: ซ้าย
-- Nav links: กลาง, Sarabun 500, 15px
+- Nav links: กลาง, Anuphan 500, 15px
 - CTA: ขวา
 - Active state: `#3e93ed` text + 2px bottom border
 
@@ -226,14 +228,14 @@ Component พิเศษสำหรับหน้างาน แสดงผ
 ## Do's and Don'ts
 
 **Do**
-- ใช้ Sarabun สำหรับข้อความภาษาไทยทุกขนาด
+- ใช้ Anuphan สำหรับข้อความภาษาไทยทุกขนาด
 - ใช้ Red Hat Display สำหรับ Heading, Button และตัวเลขสำคัญ
 - ใช้ `success` (#228350) สำหรับสถานะสำเร็จและ `error` (#E62F29) สำหรับความผิดพลาด
 - ใช้ Skeleton loading สำหรับข้อมูลที่โหลดจาก API
 
 **Don't**
 - อย่าใช้สี Primary (#3e93ed) สำหรับ Data visualization ให้ Reserve ไว้สำหรับ Interactive element
-- อย่าผสม Red Hat Display และ Sarabun ในประโยคเดียวกัน
+- อย่าผสม Red Hat Display และ Anuphan ในประโยคเดียวกัน
 - อย่าใช้ฟอนต์ขนาดต่ำกว่า 12px บน Mobile
 - อย่าใช้ Shadow ซ้อนกันหลายชั้น ให้เลือก Level ที่เหมาะสมเพียงชั้นเดียว
 - อย่าใช้สี Semantic (Success/Warning/Error) เพื่อความสวยงาม ใช้เฉพาะสื่อสถานะจริงเท่านั้น
