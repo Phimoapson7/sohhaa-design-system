@@ -11,6 +11,28 @@ The aesthetic balances a clean, modern structure with friendly energy. Every com
 - **Trustworthy** — ระบบจอง/ชำระเงินต้องดูน่าเชื่อถือทุกจุด
 - **Responsive-first** — Mobile และ Web ต้องสมบูรณ์เท่ากัน
 
+## Brand Voice
+
+### Sohhaa คือใคร
+Sohhaa คือพื้นที่รวมกิจกรรมที่ทำให้วันหยุดของคุณไม่ว่างเปล่า เกิดมาเพื่อให้คนหากิจกรรมได้ง่ายขึ้น และให้ผู้จัดงานมีเครื่องมือที่ดีพอ ไม่ต้องใช้หลายแอป จบในที่เดียว
+
+### Tone & Voice
+| มิติ | Sohhaa เป็น | Sohhaa ไม่เป็น |
+|---|---|---|
+| ภาษา | เป็นกันเอง กระชับ | ทางการ ซับซ้อน |
+| น้ำเสียง | กระตือรือร้น ชวนออกไป | เย็นชา หรือ Hype เกิน |
+| ความรู้สึก | เชื่อถือได้ ไม่ทำให้กังวล | ดูน่ากลัวหรือยุ่งยาก |
+| การช่วยเหลือ | แนะนำตรงๆ ไม่วนเวียน | พูดมากเกินจำเป็น |
+
+### Microcopy — ตัวอย่างภาษาที่ใช้ในระบบ
+| Moment | ห้ามใช้ | ใช้แทน |
+|---|---|---|
+| Empty State | "ไม่พบข้อมูล" | "ยังไม่มีงานในพื้นที่นี้ ลองเปลี่ยนพื้นที่การค้นหาดูนะ" |
+| Loading | "กำลังโหลด..." | "กำลังเซาะหากิจกรรมให้..." |
+| จองสำเร็จ | "ดำเนินการสำเร็จ" | "เจอแล้ว! เตรียมตัวให้พร้อมนะ" |
+| Error | "เกิดข้อผิดพลาด" | "โอ๊ะ มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง" |
+| ไม่มีผลการค้นหา | "ไม่พบผลลัพธ์" | "หาไม่เจอ ลองเปลี่ยน Keyword ดูนะ" |
+
 ---
 
 ## Colors
@@ -30,14 +52,6 @@ The aesthetic balances a clean, modern structure with friendly energy. Every com
 | `primary-300` | `#a3c2f7` | Focus rings, selected backgrounds |
 | `primary-200` | `#d0defb` | Subtle highlights |
 | `primary-100` | `#ebf1fd` | Background tints, chip fills |
-
-### Secondary
-โทน Teal สำหรับ Element รองที่ไม่แย่งความสนใจจาก Primary
-
-| Token | Hex | การใช้งาน |
-|---|---|---|
-| `secondary` | `#0D9488` | Secondary buttons, category tags, badges |
-| `secondary-light` | `#CCFAF6` | Tag backgrounds, chip fills |
 
 ### Neutral
 โครงสร้างหน้าและข้อความ
@@ -92,7 +106,7 @@ The aesthetic balances a clean, modern structure with friendly energy. Every com
 | ชื่อ | Size | Weight | Font | Line Height | Letter Spacing |
 |---|---|---|---|---|---|
 | Display | 40px | 700 | Red Hat Display | 1.2 | -0.02em |
-| H1 | 32px | 700 | Red Hat Display / Anuphan | 1.3 | -0.01em / 0em |
+| H1 | 32px | 700 | Red Hat Display / Anuphan | 1.5 | -0.01em / 0em |
 | H2 | 24px | 700 | Red Hat Display / Anuphan | 1.4 | -0.01em / 0em |
 | H3 | 20px | 600 | Red Hat Display / Anuphan | 1.4 | -0.01em / 0em |
 | Body | 16px | 400 | Anuphan | 1.6 | 0em |
@@ -165,23 +179,67 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 - Font: Red Hat Display 600, 15px
 - Min width: `100px`
 
-| Variant | Background | Text |
-|---|---|---|
-| Primary | `#3e93ed` | `#FFFFFF` |
-| Neutral | `#394956` | `#FFFFFF` |
-| Success | `#228350` | `#FFFFFF` |
-| Warning | `#FEC748` | `#232323` |
-| Error | `#E62F29` | `#FFFFFF` |
+| Variant | Background | Text | Border |
+|---|---|---|---|
+| Primary | `#3e93ed` | `#FFFFFF` | — |
+| Primary Hover | `#75a9f4` | `#FFFFFF` | — |
+| Secondary | `#FFFFFF` | `#232323` | 1px `#D1D5DB` |
+| Ghost | transparent | `#3e93ed` | — |
+| Danger | `#E62F29` | `#FFFFFF` | — |
+| Disabled | 40% opacity | — | — |
 
 ### Card
 - Background: `#FFFFFF`
-- Border: 1px `#F2F3F7`
+- Border: 1px `#D1D5DB`
 - Border radius: `12px`
 - Padding: `20px`
 - Hover: border-color `#3e93ed`
-- Shadow: Level 1
+- Shadow: ไม่มี
 
-**Event Card** แสดง: รูป Cover, ชื่อ Event (H3), วันเวลา (Body Small), สถานที่ (Body Small), ราคา (Body Medium, Red Hat Display), Badge ประเภทงาน
+### Event Card
+- Background: `#FFFFFF`
+- Border: 1px `#D1D5DB`
+- Border radius: `12px`
+- Shadow: ไม่มี
+- Overflow: hidden (รูปภาพชิดขอบ)
+- Padding ส่วนข้อมูล: `16px`
+
+**Cover Image Rules (สำคัญ)**
+- ต้องใช้รูปภาพจริงจาก Organizer เสมอ
+- ห้ามใช้ Gradient สี หรือ Solid Color แทนรูปภาพ
+- ห้ามสร้าง Placeholder ที่มีชื่องานหรือข้อความซ้อนบนพื้นสี
+- Cover Image height: `180px`, object-fit: cover, width: 100%
+
+**Cover Image Fallback (เฉพาะกรณีไม่มีรูปจริงเท่านั้น)**
+- Background: `#F2F3F7`
+- แสดง Icon Ticket กลาง Card
+- Icon สี `#94A1B1`, ขนาด `48px`
+- ห้ามใช้ Gradient หรือสีอื่นแทน
+
+**Layout**
+- Category Tag: มุมซ้ายบนของรูป, offset `12px`
+- Favorite Button: วงกลม `32px`, bg white, มุมขวาบน
+- วันที่: Caption สี `#3e93ed`, uppercase
+- ชื่องาน: H3, max 2 บรรทัด
+- สถานที่และสถานะ: Body Small + Icon นำ
+- ราคา: Body Medium Bold, Red Hat Display, ขวาล่าง
+
+### Blog / Story Card
+- Background: `#FFFFFF`
+- Border: 1px `#D1D5DB`
+- Border radius: `12px`
+- Shadow: ไม่มี
+- Overflow: hidden
+
+**Cover Image**
+- Height: `200px` (fixed ทุก Card ห้ามยืดหดตามรูปจริง)
+- object-fit: cover
+- width: 100%
+
+**Layout**
+- Category Tag: ใต้รูป ก่อนชื่อบทความ
+- ชื่อบทความ: H3, max 2 บรรทัด
+- คำอธิบาย: Body Small, max 2 บรรทัด, สี `#394956`
 
 ### Input
 - Height: `44px`
@@ -199,13 +257,30 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 - Border radius: `4px`
 - Font: Anuphan 500, 13px
 
-| Variant | Background | Text |
+> ⚠️ Tag มี 2 ประเภท ห้ามใช้สลับกัน
+
+**Category Tag — ประเภทกิจกรรม**
+- Background: `#F2F3F7`
+- Text: `#394956`
+- Border: ไม่มี
+- ใช้กับ: Concert, Workshop, Business, Sport ฯลฯ
+- ใช้สีเดียวทั้งหมดไม่ว่าจะมีกี่ประเภท
+- ตำแหน่ง: มุมซ้ายบนของ Cover Image
+
+**Status Tag — สถานะของงาน (Text Only ไม่มีพื้นหลัง)**
+- Font: Anuphan 600, 12px
+- Background: ไม่มี
+- Border: ไม่มี
+- ตำแหน่ง: หน้ารายละเอียดคำสั่งซื้อเท่านั้น
+- ห้ามแสดงบน Event Card หน้าแรก หรือ Listing Page
+
+| Variant | Text Color | ใช้กับ |
 |---|---|---|
-| Primary | `#3e93ed` | `#FFFFFF` |
-| Neutral | `#394956` | `#FFFFFF` |
-| Success | `#228350` | `#FFFFFF` |
-| Warning | `#FEC748` | `#232323` |
-| Error | `#E62F29` | `#FFFFFF` |
+| Success | `#23633E` | เปิดขาย, ว่าง |
+| Warning | `#FEC748` | ใกล้เต็ม, เหลือน้อย |
+| Error | `#D21B15` | เต็มแล้ว, ปิดรับ |
+| Neutral | `#394956` | Online, New, Meetup |
+
 
 ### Navigation
 - Top bar height: `60px`
