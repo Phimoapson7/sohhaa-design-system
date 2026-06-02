@@ -33,6 +33,15 @@ Sohhaa คือพื้นที่รวมกิจกรรมที่ท�
 | Error | "เกิดข้อผิดพลาด" | "โอ๊ะ มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง" |
 | ไม่มีผลการค้นหา | "ไม่พบผลลัพธ์" | "หาไม่เจอ ลองเปลี่ยน Keyword ดูนะ" |
 
+### UI Labels — ชื่อที่ใช้ใน Section และปุ่ม
+| ห้ามใช้ | ใช้แทน |
+|---|---|
+| "Browse by category" | "เลือกตามหมวดหมู่" |
+| "View all" | "ดูทั้งหมด →" |
+| "Popular Events" | "กำลังมาแรง" |
+| "Read more" | "อ่านต่อ" |
+| "Stories & guides" | "บทความและไอเดีย" |
+
 ---
 
 ## Colors
@@ -276,11 +285,9 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 
 | Variant | Text Color | ใช้กับ |
 |---|---|---|
-| Success | `#23633E` | เปิดขาย, ว่าง |
-| Warning | `#FEC748` | ใกล้เต็ม, เหลือน้อย |
+| Warning | `#FEC748` | เหลือน้อย, ใกล้เต็ม |
 | Error | `#D21B15` | เต็มแล้ว, ปิดรับ |
-| Neutral | `#394956` | Online, New, Meetup |
-
+| Neutral | `#394956` | New |
 
 ### Navigation
 - Top bar height: `60px`
@@ -291,12 +298,84 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 - CTA: ขวา
 - Active state: `#3e93ed` text + 2px bottom border
 
+**Responsive Behavior**
+- Desktop (1024px+): แสดง Nav Links เต็ม ไม่มี Hamburger
+- Tablet (768px–1023px): แสดง Nav Links เต็มถ้าพื้นที่พอ
+- Mobile (< 768px): แสดง Hamburger Menu แทน Nav Links
+
 ### Check-in Badge (Organizer-specific)
 Component พิเศษสำหรับหน้างาน แสดงผลขนาดใหญ่บน Mobile
 
 - ✅ เช็คอินแล้ว: Background `#E4FBE7`, text `#228350`, ตัวเลขขนาด Display
 - ❌ ยังไม่มา: Background `#FFE4E1`, text `#E62F29`
 - ⏳ รอยืนยัน: Background `#FFF7E4`, text `#FFD56E`
+
+---
+
+## Brand Illustration
+
+### Journey Path (Decorative Element)
+เส้นเดียววิ่งต่อเนื่องตลอดหน้า โค้งงอเป็น Shape ที่สื่อความหมายของแต่ละ Section
+สื่อถึงการเดินทางและการเซาะหากิจกรรมของ Sohhaa
+
+**Style**
+- รูปแบบ: Single continuous line art
+- สี: `#d0defb` (Primary-200)
+- ความหนา: 4px
+- เส้นโค้ง Organic ดูพริ้วไหว ไม่ใช่เส้นตรง
+- ซ่อนบน Mobile (< 768px)
+- เป็น SVG decorative ไม่ใช่ Interactive element
+- ห้ามทับ Content หลัก
+
+**เส้นแปลงร่างตาม Section**
+| Section | รูปที่เส้นแปลงเป็น |
+|---|---|
+| 2. Hero Section | จุดเริ่มต้น ออกจากมุมซ้ายบน โค้งลงมา |
+| 3. Search Bar | รูปแว่นขยาย |
+| 4. Browse by Category | เส้นโค้งผ่านเฉยๆ |
+| 5. อีเวนต์มาแรง | รูปเปลวไฟ |
+| 6. Billboard Banner | เส้นโค้งผ่านเฉยๆ |
+| 7. Organizer CTA | รูปดาว |
+| 8. บทความและไอเดีย | รูปดินสอ แล้วเส้นจบลง |
+
+## Page Structure
+
+### หน้าแรก (Home)
+เรียงตามลำดับจากบนลงล่าง
+
+1. **Navigation Bar** — Logo, Nav Links, Sign in, Create Event
+2. **Hero Section** — Headline + Body + Buttons (ซ้าย) + Hero Banner Slider (ขวา)
+3. **Search Bar** — ค้นหา, พื้นที่, ช่วงเวลา
+4. **Browse by Category** — Filter หมวดหมู่
+5. **อีเวนต์ที่กำลังมาแรง** — Event Card Grid 4 คอลัมน์
+6. **Billboard Banner** — Full-width แบนเนอร์ event, height 200px, คลิกได้
+7. **Organizer CTA** — Dark Section ชวนผู้จัดงาน
+8. **บทความและไอเดีย** — Blog/Story Card Grid 3 คอลัมน์
+9. **Footer** — Links, Logo, Copyright
+
+> ⚠️ ห้ามเพิ่ม Section นอกเหนือจากนี้โดยไม่ได้รับการอนุมัติ
+> ห้ามสลับลำดับ Section โดยไม่มีเหตุผลด้าน UX
+
+### Hero Banner (Paid Placement)
+- ตำแหน่ง: Hero Section ฝั่งขวา
+- รูปแบบ: Image Slider แนวนอน
+- ภาพ: Poster/Cover จาก Organizer เต็มพื้นที่ ไม่ใช่ Event Card
+- ขนาดภาพ: 16:9 ratio, object-fit: cover
+- Auto slide: ทุก 4-5 วินาที
+- มี Dot indicator ด้านล่างบอกจำนวนงาน
+- รองรับ Manual swipe บน Mobile
+- คลิกแล้วไปหน้า Event Detail ของงานนั้น
+
+### Hero Section Layout
+**ฝั่งซ้าย — ประกอบด้วย**
+- Badge/Tag เล็ก บอก Context เช่น "กำลังเซาะหากิจกรรมให้..."
+- H1 Headline หลัก
+- Body Text คำอธิบายสั้นๆ
+- Button Group (Primary + Secondary)
+
+**ห้ามมีใน Hero Section**
+- Feature Highlights เช่น ✅ จองง่าย 🎟️ E-ticket 📍 ค้นหาตามพื้นที่
+- Icon + Text บอก Feature ใดๆ ทั้งสิ้น
 
 ---
 
