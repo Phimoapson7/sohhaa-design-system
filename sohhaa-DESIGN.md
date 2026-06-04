@@ -115,8 +115,8 @@ Sohhaa คือพื้นที่รวมกิจกรรมที่ท�
 | ชื่อ | Size | Weight | Font | Line Height | Letter Spacing |
 |---|---|---|---|---|---|
 | Display | 40px | 700 | Red Hat Display | 1.2 | -0.02em |
-| H1 | 32px | 700 | Red Hat Display / Anuphan | 1.5 | -0.01em / 0em |
-| H2 | 24px | 700 | Red Hat Display / Anuphan | 1.4 | -0.01em / 0em |
+| H1 | 32px | 600 | Red Hat Display / Anuphan | 1.6 | -0.01em / 0em |
+| H2 | 24px | 600 | Red Hat Display / Anuphan | 1.4 | -0.01em / 0em |
 | H3 | 20px | 600 | Red Hat Display / Anuphan | 1.4 | -0.01em / 0em |
 | Body | 16px | 400 | Anuphan | 1.6 | 0em |
 | Body Medium | 16px | 500 | Anuphan | 1.6 | 0em |
@@ -129,6 +129,7 @@ Sohhaa คือพื้นที่รวมกิจกรรมที่ท�
 - ชื่อ Brand, UI Label ภาษาอังกฤษล้วน และชื่อปุ่ม ใช้ **Red Hat Display**
 - ตัวเลขสำคัญ เช่น ราคา, จำนวนที่นั่ง ใช้ **Red Hat Display weight 600** เพื่อความชัดเจน
 - ห้ามผสมสองฟอนต์ในคำหรือประโยคเดียวกัน
+- H1 และ Display ที่เป็นภาษาไทย ต้องใช้ **Anuphan เท่านั้น** ห้ามใช้ Red Hat Display กับภาษาไทย
 
 ---
 
@@ -207,31 +208,44 @@ Base unit คือ **4px** ใช้ Multiplier ตามลำดับนี�
 
 ### Event Card
 - Background: `#FFFFFF`
-- Border: 1px `#D1D5DB`
-- Border radius: `12px`
+- Border: 0.5px `#F2F3F7`
+- Border radius: `16px`
 - Shadow: ไม่มี
-- Overflow: hidden (รูปภาพชิดขอบ)
-- Padding ส่วนข้อมูล: `16px`
+- Overflow: hidden
+- Height: fixed `280px` ทุก Card
 
-**Cover Image Rules (สำคัญ)**
-- ต้องใช้รูปภาพจริงจาก Organizer เสมอ
+**Cover Image**
+- เต็ม Card ทั้งใบ width และ height 100%
+- object-fit: cover
 - ห้ามใช้ Gradient สี หรือ Solid Color แทนรูปภาพ
-- ห้ามสร้าง Placeholder ที่มีชื่องานหรือข้อความซ้อนบนพื้นสี
-- Cover Image height: `180px`, object-fit: cover, width: 100%
 
-**Cover Image Fallback (เฉพาะกรณีไม่มีรูปจริงเท่านั้น)**
+**Fade Overlay**
+- ตำแหน่ง: ด้านล่างของรูป
+- Style: `linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 40%, transparent 100%)`
+- ตัวหนังสือทุกตัวใช้สีดำตาม Palette ปกติ
+
+**Cover Image Fallback (เฉพาะกรณีไม่มีรูปจริง)**
 - Background: `#F2F3F7`
-- แสดง Icon Ticket กลาง Card
-- Icon สี `#94A1B1`, ขนาด `48px`
-- ห้ามใช้ Gradient หรือสีอื่นแทน
+- แสดง Icon Ticket กลาง Card สี `#94A1B1` ขนาด `48px`
 
-**Layout**
-- Category Tag: มุมซ้ายบนของรูป, offset `12px`
-- Favorite Button: วงกลม `32px`, bg white, มุมขวาบน
-- วันที่: Caption สี `#3e93ed`, uppercase
-- ชื่องาน: H3, max 2 บรรทัด
-- สถานที่และสถานะ: Body Small + Icon นำ
-- ราคา: Body Medium Bold, Red Hat Display, ขวาล่าง
+**Layout (ซ้อนบน Overlay ด้านล่าง)**
+- Date Badge: พื้น `#3e93ed`, ตัวอักษรขาว, Border radius `6px`
+  - บนสุด: เดือนย่อ เช่น JUN ขนาด 9px
+  - ล่าง: วันที่ตัวเลข ขนาด 18px
+- ชื่องาน: 15px font-weight 500 สี `#232323` max 2 บรรทัด
+- สถานที่: 12px สี `#394956`
+- ราคา: label "เริ่มต้น" 11px + ตัวเลข 16px font-weight 500 สี `#232323`
+- ปุ่ม "จองเลย": Primary Button ขวาล่าง
+
+**Category Tag**
+- ตำแหน่ง: มุมซ้ายบนของ Card offset `12px`
+- Background: `rgba(255,255,255,0.9)`
+- Text: `#394956`
+
+**ห้ามมีใน Event Card**
+- Favorite Button (ยังไม่มีฟังก์ชัน)
+- Status Tag บน Cover Image
+- ข้อความ "อ่านต่อ"
 
 ### Blog / Story Card
 - Background: `#FFFFFF`
@@ -319,9 +333,11 @@ Component พิเศษสำหรับหน้างาน แสดงผ
 สื่อถึงการเดินทางและการเซาะหากิจกรรมของ Sohhaa
 
 **Style**
-- รูปแบบ: Single continuous line art
-- สี: `#d0defb` (Primary-200)
-- ความหนา: 4px
+- รูปแบบ: Single continuous line art พร้อม Illustration ประกอบตามจุด
+- สีเส้นหลัก: `#d0defb` (Primary-200)
+- สี Accent บน Illustration: `#3e93ed` (Primary) ใช้เน้น Detail เล็กๆ
+- ความหนา: 3px
+- สไตล์ Illustration: Line art เส้นเดียวกับ Path ต่อเนื่องกัน ขนาดไม่เกิน `80px`
 - เส้นโค้ง Organic ดูพริ้วไหว ไม่ใช่เส้นตรง
 - ซ่อนบน Mobile (< 768px)
 - เป็น SVG decorative ไม่ใช่ Interactive element
@@ -332,11 +348,10 @@ Component พิเศษสำหรับหน้างาน แสดงผ
 |---|---|
 | 2. Hero Section | จุดเริ่มต้น ออกจากมุมซ้ายบน โค้งลงมา |
 | 3. Search Bar | รูปแว่นขยาย |
-| 4. Browse by Category | เส้นโค้งผ่านเฉยๆ |
-| 5. อีเวนต์มาแรง | รูปเปลวไฟ |
-| 6. Billboard Banner | เส้นโค้งผ่านเฉยๆ |
-| 7. Organizer CTA | รูปดาว |
-| 8. บทความและไอเดีย | รูปดินสอ แล้วเส้นจบลง |
+| 4. เซาะหาตามสไตล์คุณ | รูปเปลวไฟ |
+| 5. Billboard Banner | เส้นโค้งผ่านเฉยๆ |
+| 6. Organizer CTA | รูปดาว |
+| 7. บทความและไอเดีย | รูปดินสอ แล้วเส้นจบลง |
 
 ## Page Structure
 
@@ -346,12 +361,11 @@ Component พิเศษสำหรับหน้างาน แสดงผ
 1. **Navigation Bar** — Logo, Nav Links, Sign in, Create Event
 2. **Hero Section** — Headline + Body + Buttons (ซ้าย) + Hero Banner Slider (ขวา)
 3. **Search Bar** — ค้นหา, พื้นที่, ช่วงเวลา
-4. **Browse by Category** — Filter หมวดหมู่
-5. **อีเวนต์ที่กำลังมาแรง** — Event Card Grid 4 คอลัมน์
-6. **Billboard Banner** — Full-width แบนเนอร์ event, height 200px, คลิกได้
-7. **Organizer CTA** — Dark Section ชวนผู้จัดงาน
-8. **บทความและไอเดีย** — Blog/Story Card Grid 3 คอลัมน์
-9. **Footer** — Links, Logo, Copyright
+4. **เซาะหาตามสไตล์คุณ** — Category Filter + Event Card Grid 4 คอลัมน์ (Filter แล้ว Card เปลี่ยนตาม)
+5. **Billboard Banner** — Full-width แบนเนอร์ event, height 200px, คลิกได้
+6. **Organizer CTA** — Dark Section ชวนผู้จัดงาน
+7. **บทความและไอเดีย** — Blog/Story Card Grid 3 คอลัมน์
+8. **Footer** — Links, Logo, Copyright
 
 > ⚠️ ห้ามเพิ่ม Section นอกเหนือจากนี้โดยไม่ได้รับการอนุมัติ
 > ห้ามสลับลำดับ Section โดยไม่มีเหตุผลด้าน UX
@@ -376,6 +390,40 @@ Component พิเศษสำหรับหน้างาน แสดงผ
 **ห้ามมีใน Hero Section**
 - Feature Highlights เช่น ✅ จองง่าย 🎟️ E-ticket 📍 ค้นหาตามพื้นที่
 - Icon + Text บอก Feature ใดๆ ทั้งสิ้น
+
+### Billboard Banner (Paid Placement)
+- รูปแบบ: Horizontal Slider เลื่อนได้
+- Auto slide: ทุก 5 วินาที
+- มี Dot indicator ด้านล่าง
+- รองรับ Manual swipe บน Mobile
+
+**Card Layout — แนวนอน**
+- Height: `200px` fixed
+- Border radius: `16px`
+- Overflow: hidden
+- รูปภาพ: ฝั่งขวา 40% ของ Card
+- ข้อมูล: ฝั่งซ้าย 60% มี Fade Overlay เหมือน Event Card
+
+**Fade Overlay (ฝั่งซ้าย)**
+- Style: `linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 60%, transparent 100%)`
+- ตัวหนังสือใช้สีดำตาม Palette ปกติ
+
+**Layout ฝั่งซ้าย**
+- Date Badge: พื้น `#3e93ed` ตัวอักษรขาว Border radius `6px`
+  - บนสุด: เดือนย่อ ขนาด 9px
+  - ล่าง: วันที่ตัวเลข ขนาด 18px
+- ชื่องาน: H2, max 2 บรรทัด สี `#232323`
+- รายละเอียดสั้น: Body Small สี `#394956` max 1 บรรทัด
+- ปุ่ม "ดูรายละเอียด": Primary Button
+
+**Category Tag**
+- ตำแหน่ง: มุมซ้ายบน offset `12px`
+- Background: `rgba(255,255,255,0.9)`
+- Text: `#394956`
+
+**Cover Image (ฝั่งขวา)**
+- object-fit: cover
+- ห้ามใช้ Gradient หรือ Solid Color แทนรูปจริง
 
 ---
 
